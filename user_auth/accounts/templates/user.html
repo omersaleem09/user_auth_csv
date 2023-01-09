@@ -5,30 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 <body>
-    {% load tz %}
-{% get_current_timezone as timezone %}
-<h1>{{date|localtime}}</h1>
-<h1>{{timezone}}</h1>
-    <h1>{{request.user}}</h1>
-    <h1>{{user}}</h1>
-    <table border = "1">
-        <tr>
-           <th>Name</th>
-           <th>JOINED</th>
-        </tr>
-        {% for i in user %}
-        <h1>{{i.date_joined}}</h1>
-        <tr>
-           <td>{{i.first_name}}</td>
-           <td>{{i.date_joined}}</td>
-        </tr>
     
-     </table>
+    {% load tz %}
+
+            {% for i in user %}
+
+
+     <h1 class="date-joined">DATES
+        <p class="value">{{i.date_joined|timezone:timeZone}}</p>
+     </h1>
     {% endfor %}
-    <script>
-          
-    </script>
+
+<script>
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    document.cookie = "timeZone="+timeZone;
+</script>
 </body>
 </html>

@@ -12,22 +12,12 @@ from dateutil import tz
 
 def UserCreated(request):
    user_data =  User.objects.all()
-   user_time = User.objects.values_list('date_joined')
-   from_zone = tz.tzutc()
-   to_zone = tz.tzlocal()
-
-   utc = datetime.strptime('2022-06-17 05:39:09', '%Y-%m-%d %H:%M:%S')
-
-   utc = utc.replace(tzinfo=from_zone)
-
-   # Convert to local time zone
-   to_local_time = utc.astimezone(to_zone)
-
-   print(utc,to_local_time)
-   print('==============================================')
-   print(user_time)
+   user_time = User.objects.values_list('date_joined',flat=True)
+   request.session['timeZone'] = request.COOKIES.get('timeZone')
+   timezone = request.session['timeZone'] 
    context = {
-      'user':user_data
+      'user':user_data,
+      'timeZone':timezone
    }
    # print(request.user.timezone)
    return render(request,'user.html',context)
