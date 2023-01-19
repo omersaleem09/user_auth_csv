@@ -9,10 +9,11 @@ class Command(BaseCommand):
         # print("quest",quest)
         # print("ans",ans)
 
-        count = 0
+        
         for i in quest:
+            count = 0
             specfic_choice = Answer_Choice.objects.filter(question=i)
             for j in specfic_choice:
                 j.order = count
                 j.save()
-                count+=2    
+                count+=1

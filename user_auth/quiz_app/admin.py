@@ -10,7 +10,7 @@ from quiz_app.models import *
 
 class PizzaToppingsTabularInline(OrderedTabularInline):
     model = Answer_Choice
-    fields = ('answer_choice', 'order', 'move_up_down_links',)
+    fields = ('answer_choice', 'order','score' ,'move_up_down_links',)
     readonly_fields = ('order', 'move_up_down_links',)
     ordering = ('order',)
     extra = 1

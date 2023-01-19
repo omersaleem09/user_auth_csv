@@ -1,0 +1,6 @@
+{% for i in a %}
+    <h1>{{i}}</h1>
+    {% for j in i.answer_choice_set.all %}
+    <h1>{{j.answer_choice}}</h1>
+    {% endfor %}
+    {% endfor %}

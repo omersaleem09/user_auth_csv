@@ -14,6 +14,7 @@ class Question(models.Model):
 
 class Answer_Choice(OrderedModel):
     answer_choice = models.TextField()
+    score = models.IntegerField()
     question = models.ForeignKey(Question, default=1, verbose_name="Category", on_delete=models.CASCADE)
     order_with_respect_to = 'question'
 
