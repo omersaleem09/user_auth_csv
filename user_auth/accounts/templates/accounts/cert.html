@@ -1,0 +1,42 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+{% if request.user.is_superuser %}
+
+    <h1>{{cert}} </h1>
+    <select name="cert" id="cert">
+    {% for i in user_cert %}
+        <option value="{{i.pk}}">{{i.cert}}</option>
+    <h1>{{i.cert}}</h1>
+    {% endfor %}
+</select>
+
+    {% endif %}
+
+    <input type="text" name="add-cert" id="add-cert">
+    <button type="button" id="save-cert">SAVE</button>
+
+<script>
+   
+    
+    $("#save-cert").on('click',function () {
+        var cert_data = document.getElementById('add-cert').value;
+        console.log(document.getElementById('add-cert').value)
+        console.log("CERTDATA",cert_data)  
+      $.ajax({
+        url: "{% url 'accounts:cert-page' %}",
+        method: "GET", // or "get"
+        data: {'cert_data':document.getElementById('add-cert').value},
+        headers: { "X-CSRFToken": "{{ csrf_token }}" }, // for csrf token
+        success: function (data) {
+          //  console.log(data)  
+
+          document.getElementById('add-cert').value = '';
+            
+            console.log("WORKING")
+         // console.log(data);
+        },
+      });
+    });
+  
+
+  
+</script>

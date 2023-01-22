@@ -1,7 +1,7 @@
 # users/admin.py
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User,Employee
+from .models import *
 # from .forms import MyUserCreationForm, MyUserChangeForm
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
@@ -18,3 +18,6 @@ class EmployeeAdmin(ImportExportModelAdmin):
     pass
 
 admin.site.register(User)
+
+
+admin.site.register(Certificate)
