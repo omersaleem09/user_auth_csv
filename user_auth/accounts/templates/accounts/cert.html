@@ -1,18 +1,31 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 {% if request.user.is_superuser %}
 
-    <h1>{{cert}} </h1>
+    <!-- <h1>{{cert}} </h1>
+    <h1>Your certificate : {{user_cert.first_name}}</h1>
+
     <select name="cert" id="cert">
     {% for i in user_cert %}
-        <option value="{{i.pk}}">{{i.cert}}</option>
-    <h1>{{i.cert}}</h1>
+        <option value="{{i.pk}}">{{i.cert.name}}</option>
     {% endfor %}
 </select>
 
-    {% endif %}
+    {% endif %} -->
+    <h1>start</h1>
+    {% for i in user_cert %}
+    {% for j in i.cert.all %}
+    <h1>{{j}}</h1>
+
+    {% endfor %}
+    {% endfor %}
+
+    {% for i in user_cert %}
+    <h1>{{i.cert.all|join:" "}}</h1>
+    {% endfor %}
 
     <input type="text" name="add-cert" id="add-cert">
     <button type="button" id="save-cert">SAVE</button>
+       
 
 <script>
    

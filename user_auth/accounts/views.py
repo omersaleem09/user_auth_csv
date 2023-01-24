@@ -42,26 +42,22 @@ def UserCreated(request):
 class Certicate(View):
    def get(self,request):
 
-      # user_cert = User.objects.all()
-      if request.method == "POST":
-        value = request.POST.get("cert_data")
-        print("=============")
-        print(value)
+      user_cert = User.objects.all().order_by('pk')
+      context = {'user_cert':user_cert}
 
-      user_cert = User.objects.select_related('cert').all()
-      cert_data = request.GET.get('cert_data')
-      print(cert_data)
-      # p = Certicate.objects.create(name='abcd')
-      # p.save()
-      if cert_data is not None:
-         val_cer = Certificate.objects.create(name=cert_data)
-         val_cer.save()
-      # a = Certicate.objects.create(name=cert_data)
-      print("DONE")
-      context = {
-         'cert':'CERTIFICATE PAGE',
-         'user_cert':user_cert
-      }
+      # user_cert = User.objects.select_related('cert').all()
+      # all_cert = Certificate.objects.all()
+      # cert_data = request.GET.get('cert_data')
+      # print(cert_data)
+      # if cert_data is not None:
+      #    val_cer = Certificate.objects.create(name=cert_data)
+      #    val_cer.save()
+      # print("DONE")
+      # context = {
+      #    'cert':'CERTIFICATE PAGE',
+      #    'user_cert':user_cert,
+      #    'all_cert':all_cert
+      # }
 
 
 
