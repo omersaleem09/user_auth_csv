@@ -31,3 +31,22 @@ class Employee(models.Model):
     def __str__(self):
 
         return self.first_name+''+self.last_name
+
+
+from datetime import date
+class TimeTrack(models.Model):
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+
+    @property
+    def get_time(self):
+        print("adasd")
+        from datetime import timedelta
+    
+        a = self.start_date
+        b = self.end_date
+
+        if self.end_date is not None:
+            time_difference = b - a
+            print(time_difference/timedelta(1))
+            return time_difference

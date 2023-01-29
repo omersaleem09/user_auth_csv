@@ -42,8 +42,11 @@ def UserCreated(request):
 class Certicate(View):
    def get(self,request):
 
-      user_cert = User.objects.all().order_by('pk')
-      context = {'user_cert':user_cert}
+      user_cert = User.objects.filter(username=request.user).order_by('pk')
+
+      a = TimeTrack.objects.all()
+
+      context = {'user_cert':user_cert,'time_track':a}
 
       # user_cert = User.objects.select_related('cert').all()
       # all_cert = Certificate.objects.all()

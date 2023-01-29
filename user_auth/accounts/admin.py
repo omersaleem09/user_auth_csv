@@ -21,3 +21,5 @@ admin.site.register(User)
 
 
 admin.site.register(Certificate)
+
+admin.site.register(TimeTrack)

@@ -19,8 +19,15 @@
     {% endfor %}
     {% endfor %}
 
+<hr>
     {% for i in user_cert %}
-    <h1>{{i.cert.all|join:" "}}</h1>
+    <h1>{{i.username}}</h1>
+    <h1>{{i.cert.all|join:"<br>"}}</h1>
+    {% endfor %}
+
+
+    {% for i in time_track %}
+    <h1>{{i.get_time}}</h1>
     {% endfor %}
 
     <input type="text" name="add-cert" id="add-cert">
