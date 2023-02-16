@@ -8,6 +8,13 @@ user_role_choices = (
     ("StandardUser","Standar User")
 )
 
+class Group(models.Model):
+    test_field = models.CharField(max_length=255,null=True,blank=True)
+
+
+class Groups(models.Model):
+    test_field = models.CharField(max_length=255,null=True,blank=True)
+
 class Certificate(models.Model):
     name = models.CharField(max_length=255,null=True,blank=True)
 
@@ -17,6 +24,7 @@ class Certificate(models.Model):
 class User(AbstractUser):
     mobile_no = models.CharField(max_length=20,null=True,blank=True)
     cert = models.ManyToManyField(Certificate)
+    cert_name = models.TextField(null=True,blank=True)
 
     def __str__(self):
         return str(self.username)

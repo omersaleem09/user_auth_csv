@@ -23,3 +23,7 @@ admin.site.register(User)
 admin.site.register(Certificate)
 
 admin.site.register(TimeTrack)
+
+admin.site.register(Group)
+
+admin.site.register(Groups)
